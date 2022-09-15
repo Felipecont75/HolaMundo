@@ -12,7 +12,7 @@ this.app.get{'/', (req,res) =>{
 }
 listen(){
 this.app.listen(process.env.PORT, ()=>)
-console.log{"Backend en ejecucion eb ek puerto", process.env.PORT 
+console.log{"Backend en ejecucion en el puerto", process.env.PORT 
 
 }
 
