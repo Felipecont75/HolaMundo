@@ -1,5 +1,5 @@
 const express = require('express')
-const messages = require('./routes/messager')
+const messagesRouter = require('./routes/messager')
 
 class Server{
     constructor(){
@@ -14,7 +14,7 @@ class Server{
         //this.app.get('/',(req, res)=>{
             //res.send('Hola mundo')
        // })
-       this.app.use(this.paths.messages, messages)
+       this.app.use(this.paths.messages, messagesRouter)
     }
 
     listen(){
