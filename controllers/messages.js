@@ -1,42 +1,23 @@
-const { request, response } = require("express")
+const rootMessage = (req,res) => {
+    res.send('Mensajes')}
 
-const rootMessage = (req = request, res=response) => {
-    const {texto1, texto2} = req.query 
-//  console.log(req.query)/*El query tiene almacenado el mensaje Hola*/
-//  if (!texto || !texto2){
-//   res.status(400).json({
-//  msg: "No se han enviado los parametros necesarios"
-//})
-//}
-if (!texto1){
-    res.status(400).json({msg:"Falta el parametro 'texto1"})
-}
-if (!texto2){
-    res.status(400).json({msg:"Falta el parametro 'texto2"})
-}
-    res.status(200).json({msg: texto1 + ' ' + texto2})
-}
+const hiMessage =(req,res) => {
+    res.send('Hola Mundo')}
 
-/*PROBAR UN STATUS EN CADA UNA DE ELLAS: res.status(número del error).json*/
-const hiMessage =(req=request, res=response) => {
-    const {name} = req.params
-    res.json({msg:'Hola ' + name})
-}
+const byMessage = (req,res) => {
+    res.send('Adios Mundo')}
 
-const byeMessage = (req=request, res=response) => {
-    res.status(406).json({msg:'Adios Mundo'})
-}
+    const postMessage = (req,res) => {
+    res.send('Mensaje POST')}
 
-const postMessage = (req=request, res=response) => {
-    res.status(407).json({msg:'Mensaje POST'})
-}
+    const putMessage = (req,res) => {
+        res.send('Mensaje PUT')}
 
-const putMessage = (req=request, res=response) => {
-    res.status(408).json({msg:'Mensaje PUT'})
-}
+        const deleteMessage = (req,res) => {
+            res.send('Mensaje DELETE')}
 
-const deleteMessage = (req=request, res=response) => {
-    res.status(409).json({msg:'Mensaje DELETE'})
-}
 
-    module.exports = {rootMessage, hiMessage, byeMessage, postMessage, putMessage, deleteMessage}
+
+    
+
+    module.exports = {rootMessage, hiMessage, byMessage,postMessage,putMessage,deleteMessage}

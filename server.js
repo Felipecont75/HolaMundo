@@ -1,27 +1,30 @@
-const express = require('express')
-const messagesRouter = require('./routes/messager')
+const express = require('express') 
+const messagesRouter = require('./routes/messages')
 
 class Server{
     constructor(){
-        this.app = express()
-        this.paths ={
-            messages:"/api/vi/messages"   
+      this.app = express()
+      this.paths = {
+         messages:"/api/v1/messages"
+
         }
-        this.routes()
+      this.routes()
+
     }
 
-    routes(){      
-        //this.app.get('/',(req, res)=>{
-            //res.send('Hola mundo')
-       // })
-       this.app.use(this.paths.messages, messagesRouter)
-    }
-
-    listen(){
-        this.app.listen(process.env.PORT,()=> {
-            console.log("Backend en ejecución en el puerto", process.env.PORT)
-        })
-    }
+routes(){
+    
+  //this.app.get('/', (req, res) => {
+    //res.send('Hello World')
+    //  }
+    this.app.use(this.paths.messages, messagesRouter)
 }
 
-module.exports=Server
+listen(){
+    this.app.listen(process.env.PORT,() => { //Poner un this aqui xd//
+    console.log("Backend en ejecución en el puerto", process.env.PORT)
+})
+}
+}
+
+module.exports = Server
