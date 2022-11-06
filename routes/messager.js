@@ -11,7 +11,7 @@ const {
 
 router.get('/',rootMessage)
 
-router.get('/h1',hiMessage)
+router.get('/h1/:name',hiMessage)
 
 router.get('/bye',byeMessage)
 

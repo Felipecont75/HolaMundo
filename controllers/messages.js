@@ -1,23 +1,52 @@
-const rootMessage = (req,res) => {
-    res.send('Mensajes')}
+const { request, response } = require("express")
 
-const hiMessage =(req,res) => {
-    res.send('Hola Mundo')}
-
-const byMessage = (req,res) => {
-    res.send('Adios Mundo')}
-
-    const postMessage = (req,res) => {
-    res.send('Mensaje POST')}
-
-    const putMessage = (req,res) => {
-        res.send('Mensaje PUT')}
-
-        const deleteMessage = (req,res) => {
-            res.send('Mensaje DELETE')}
-
-
-
+const rootMessage = (req=request, res=response)=>{
+    const {texto1, texto2} = req.query
     
 
-    module.exports = {rootMessage, hiMessage, byMessage,postMessage,putMessage,deleteMessage}
+
+    if(!texto1){
+        res.json({msg: "Falta el parámetro 'texto1'"})
+    }
+
+    if(!texto2){
+        res.json({msg: "Falta el parámetro 'texto2'"})
+    }
+    res.json({msg:texto1 +' '+ texto2})
+}
+
+const hiMessage = (req=request, res=response)=>{
+    const {name} = req.params
+    res.json({msg:"Hola "+name})
+}
+
+const byeMessage = (req=request, res=response)=>{
+    res.json({msg:"Adios mundo"})
+}
+
+const postMessage = (req=request, res=response)=>{
+    const {no_control, nombre} = req.body
+    //console.log({no_control, nombre})
+    res.json({
+        msg:`número de control = ${no_control}, nombre = ${nombre}`
+    })
+}
+
+const putMessage = (req=request, res=response)=>{
+    res.json({msg:"mesaje PUT"})
+}
+
+const deleteMessage = (req=request, res=response)=>{
+    res.json({msg:"mesaje DELETE"})
+}
+
+module.exports={
+    rootMessage,
+    hiMessage,
+    byeMessage,
+    postMessage,
+    putMessage,
+    deleteMessage
+}
+
+module.exports={rootMessage,hiMessage,byeMessage,postMessage,putMessage,deleteMessage}
